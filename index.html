@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Name</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+        }
+        nav ul li {
+            padding: 10px 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .container {
+            padding: 20px;
+        }
+        .menu, .reviews {
+            margin: 20px 0;
+        }
+        .menu-item {
+            margin-bottom: 10px;
+        }
+        .review-form {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Restaurant Name</h1>
+        <p>Welcome to our restaurant! Check out our menu and share your reviews.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="menu" class="menu">
+            <h2>Menu</h2>
+            <div class="menu-item">
+                <h3>Dish Name 1</h3>
+                <p>Description of the dish. Price: $10</p>
+            </div>
+            <div class="menu-item">
+                <h3>Dish Name 2</h3>
+                <p>Description of the dish. Price: $15</p>
+            </div>
+            <!-- Add more menu items here -->
+        </section>
+
+        <section id="reviews" class="reviews">
+            <h2>Reviews</h2>
+            <div id="reviews-list">
+                <p>No reviews yet. Be the first to leave a review!</p>
+            </div>
+
+            <div class="review-form">
+                <h3>Leave a Review</h3>
+                <form id="review-form">
+                    <label for="name">Your Name:</label><br>
+                    <input type="text" id="name" name="name" required><br><br>
+
+                    <label for="review">Your Review:</label><br>
+                    <textarea id="review" name="review" rows="4" required></textarea><br><br>
+
+                    <button type="submit">Submit Review</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const form = document.getElementById('review-form');
+        const reviewsList = document.getElementById('reviews-list');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const review = document.getElementById('review').value;
+
+            const reviewElement = document.createElement('div');
+            reviewElement.innerHTML = `<strong>${name}</strong><p>${review}</p>`;
+            reviewsList.appendChild(reviewElement);
+
+            form.reset();
+        });
+    </script>
+</body>
+</html>
